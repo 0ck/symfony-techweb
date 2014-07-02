@@ -13,6 +13,18 @@
                 <th>Description</th>
                 <td>{{ entity.description }}</td>
             </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ entity.datedebutproject|date("m/d/Y") }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ entity.datefinproject|date("m/d/Y") }}</td>
+            </tr>
+            <tr>
+                <th>Date de fin des taches</th>
+                <td>{{ dateFin|date("m/d/Y") }}</td>
+            </tr>
         </tbody>
     </table>
 
@@ -44,6 +56,8 @@
                 <th>Id</th>
                 <th>Name</th>
                 <th>Description</th>
+                <th>Date de debut</th>
+                <th>Date de fin</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -53,6 +67,8 @@
                 <td><a href="{{ path('tache_show', { 'id': tache.id }) }}">{{ tache.id }}</a></td>
                 <td>{{ tache.name }}</td>
                 <td>{{ tache.description }}</td>
+                <td>{{ tache.datedebut|date("m/d/Y") }}</td>
+                <td>{{ tache.datefin|date("m/d/Y") }}</td>
                 <td>
                 <ul>
                     <li>

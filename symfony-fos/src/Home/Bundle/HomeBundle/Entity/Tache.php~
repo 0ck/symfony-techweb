@@ -94,30 +94,91 @@ class Tache
 
     /**
     * @ORM\ManyToOne(targetEntity="Project", inversedBy="tache")
-    * @ORM\JoinColumn(name="project_id", referencedColumnName="id")
+    * @ORM\JoinColumn(name="projectid", referencedColumnName="id")
     */
-    private $project_id;
+    private $projectid;
+
 
     /**
-     * Set project_id
+     * Set projectid
      *
-     * @param \Home\Bundle\HomeBundle\Entity\Project $projectId
+     * @param \Home\Bundle\HomeBundle\Entity\Project $projectid
      * @return Tache
      */
-    public function setProjectId(\Home\Bundle\HomeBundle\Entity\Project $projectId = null)
+    public function setProjectid(\Home\Bundle\HomeBundle\Entity\Project $projectid = null)
     {
-        $this->project_id = $projectId;
+        $this->projectid = $projectid;
     
         return $this;
     }
 
     /**
-     * Get project_id
+     * Get projectid
      *
      * @return \Home\Bundle\HomeBundle\Entity\Project 
      */
-    public function getProjectId()
+    public function getProjectid()
     {
-        return $this->project_id;
+        return $this->projectid;
+    }
+
+    /**
+    * @ORM\Column(name="dateDbut", type="datetime")
+    *
+    * @var \DateTime
+    */
+    protected $dateDebut;
+
+    /**
+     * Set dateDebut
+     *
+     * @param \DateTime $dateDebut
+     * @return Tache
+     */
+    public function setDateDebut($dateDebut)
+    {
+        $this->dateDebut = $dateDebut;
+    
+        return $this;
+    }
+
+    /**
+     * Get dateDebut
+     *
+     * @return \DateTime 
+     */
+    public function getDateDebut()
+    {
+        return $this->dateDebut;
+    }
+
+    /**
+    * @ORM\Column(name="dateFin", type="datetime")
+    *
+    * @var \DateTime
+    */
+    protected $dateFin;
+
+    /**
+     * Set dateFin
+     *
+     * @param \DateTime $dateFin
+     * @return Tache
+     */
+    public function setDateFin($dateFin)
+    {
+        $this->dateFin = $dateFin;
+    
+        return $this;
+    }
+
+    /**
+     * Get dateFin
+     *
+     * @return \DateTime 
+     */
+    public function getDateFin()
+    {
+        return $this->dateFin;
     }
 }

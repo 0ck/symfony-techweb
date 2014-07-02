@@ -48,7 +48,7 @@ class TacheController extends Controller
         $entity  = new Tache();
         $form = $this->createForm(new TacheType(), $entity);
         $project = $this->getDoctrine()->getRepository('HomeHomeBundle:Project')->find($id);
-        $entity->setProjectId($project);
+        $entity->setProjectid($project);
 
         $form->submit($request);
 
@@ -122,7 +122,7 @@ class TacheController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('HomeHomeBundle:Tache')->find($id);
-
+        $id_project= $entity->getProjectid()->getId();
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Tache entity.');
         }
@@ -131,6 +131,7 @@ class TacheController extends Controller
         $deleteForm = $this->createDeleteForm($id);
 
         return array(
+            'idProject' => $id_project,
             'entity'      => $entity,
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),

@@ -44,7 +44,8 @@ class ProjectController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('project_show', array('id' => $entity->getId())));
+
+            return $this->redirect($this->generateUrl('project'));
         }
 
         return $this->render('HomeHomeBundle:Project:new.html.twig', array(
@@ -77,7 +78,8 @@ class ProjectController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('HomeHomeBundle:Project')->find($id);
-        $taches = $em->getRepository('HomeHomeBundle:Tache')->findByproject_id($id);
+        $taches = $em->getRepository('HomeHomeBundle:Tache')->findByProjectid($id, array('dateFin'=>'DESC'));
+        $datefinProject = $em->getRepository('HomeHomeBundle:Tache')->findOneByProjectid($id, array('dateFin'=>'DESC'))->getDateFin();
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Project entity.');
@@ -86,6 +88,7 @@ class ProjectController extends Controller
         $deleteForm = $this->createDeleteForm($id);
 
         return $this->render('HomeHomeBundle:Project:show.html.twig', array(
+            'dateFin' => $datefinProject,
             'taches' => $taches,
             'entity'      => $entity,
             'delete_form' => $deleteForm->createView(),        ));
@@ -157,8 +160,7 @@ class ProjectController extends Controller
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $entity = $em->getRepository('HomeHomeBundle:Project')->find($id);
-
+            $entity = $em->getRepository('HomeHomeBundle:Project')->find($id); 
             if (!$entity) {
                 throw $this->createNotFoundException('Unable to find Project entity.');
             }

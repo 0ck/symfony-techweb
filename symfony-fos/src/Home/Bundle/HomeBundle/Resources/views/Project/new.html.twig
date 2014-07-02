@@ -17,4 +17,10 @@
         </a>
     </li>
 </ul>
+<script>
+$("form input.date").datepicker({
+    dateFormat: 'mm/dd/yy', 
+    firstDay:1
+}).attr("readonly","readonly");
+</script>
 {% endblock %}

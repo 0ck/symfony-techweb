@@ -16,7 +16,19 @@ class ProjectType extends AbstractType
     {
         $builder
             ->add('name')
-            ->add('description');
+            ->add('description')
+            ->add('dateDebutProject', 'date', array(
+                                                'widget' => 'single_text',
+                                                'input' => 'datetime',
+                                                'format' => 'MM/dd/yyyy',
+                                                'attr' => array('class' => 'date'),
+                                                ))
+            ->add('dateFinProject', 'date', array(
+                                                'widget' => 'single_text',
+                                                'input' => 'datetime',
+                                                'format' => 'MM/dd/yyyy',
+                                                'attr' => array('class' => 'date'),
+                                                ));
     }
 
     /**

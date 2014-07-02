@@ -16,7 +16,19 @@ class TacheType extends AbstractType
     {
         $builder
             ->add('name')
-            ->add('description');
+            ->add('description')
+            ->add('dateDebut', 'date', array(
+                                                'widget' => 'single_text',
+                                                'input' => 'datetime',
+                                                'format' => 'MM/dd/yyyy',
+                                                'attr' => array('class' => 'date'),
+                                                ))
+            ->add('dateFin', 'date', array(
+                                                'widget' => 'single_text',
+                                                'input' => 'datetime',
+                                                'format' => 'MM/dd/yyyy',
+                                                'attr' => array('class' => 'date'),
+                                                ));
     }
 
     /**

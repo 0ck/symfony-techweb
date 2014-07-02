@@ -113,4 +113,155 @@ class Project
         return $this->date;
     }
 
+    /**
+    * @ORM\OneToMany(targetEntity="Tache", mappedBy="projectid", cascade={"remove"})
+    */
+    private $taches;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->taches = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+    
+    /**
+     * Add taches
+     *
+     * @param \Home\Bundle\HomeBundle\Entity\Tache $taches
+     * @return Project
+     */
+    public function addTache(\Home\Bundle\HomeBundle\Entity\Tache $taches)
+    {
+        $this->taches[] = $taches;
+    
+        return $this;
+    }
+
+    /**
+     * Remove taches
+     *
+     * @param \Home\Bundle\HomeBundle\Entity\Tache $taches
+     */
+    public function removeTache(\Home\Bundle\HomeBundle\Entity\Tache $taches)
+    {
+        $this->taches->removeElement($taches);
+    }
+
+    /**
+     * Get taches
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getTaches()
+    {
+        return $this->taches;
+    }
+
+    /**
+    * @ORM\Column(name="dateDebutProject", type="datetime")
+    *
+    * @var \DateTime
+    */
+    protected $dateDebutProject;
+
+    /**
+    * @ORM\Column(name="dateFinProject", type="datetime")
+    *
+    * @var \DateTime
+    */
+    protected $dateFinProject;
+
+    /**
+     * Set dateDebut
+     *
+     * @param \DateTime $dateDebut
+     * @return Project
+     */
+    public function setDateDebut($dateDebut)
+    {
+        $this->dateDebut = $dateDebut;
+    
+        return $this;
+    }
+
+    /**
+     * Get dateDebut
+     *
+     * @return \DateTime 
+     */
+    public function getDateDebut()
+    {
+        return $this->dateDebut;
+    }
+
+    /**
+     * Set dateFin
+     *
+     * @param \DateTime $dateFin
+     * @return Project
+     */
+    public function setDateFin($dateFin)
+    {
+        $this->dateFin = $dateFin;
+    
+        return $this;
+    }
+
+    /**
+     * Get dateFin
+     *
+     * @return \DateTime 
+     */
+    public function getDateFin()
+    {
+        return $this->dateFin;
+    }
+
+    /**
+     * Set dateDebutProject
+     *
+     * @param \DateTime $dateDebutProject
+     * @return Project
+     */
+    public function setDateDebutProject($dateDebutProject)
+    {
+        $this->dateDebutProject = $dateDebutProject;
+    
+        return $this;
+    }
+
+    /**
+     * Get dateDebutProject
+     *
+     * @return \DateTime 
+     */
+    public function getDateDebutProject()
+    {
+        return $this->dateDebutProject;
+    }
+
+    /**
+     * Set dateFinProject
+     *
+     * @param \DateTime $dateFinProject
+     * @return Project
+     */
+    public function setDateFinProject($dateFinProject)
+    {
+        $this->dateFinProject = $dateFinProject;
+    
+        return $this;
+    }
+
+    /**
+     * Get dateFinProject
+     *
+     * @return \DateTime 
+     */
+    public function getDateFinProject()
+    {
+        return $this->dateFinProject;
+    }
 }
